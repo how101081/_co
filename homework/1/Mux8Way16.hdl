@@ -13,18 +13,16 @@
  *       g if sel = 110
  *       h if sel = 111
  */
-CHIP Mux8Way16 {
-    IN a[16], b[16], c[16], d[16],
-       e[16], f[16], g[16], h[16],
-       sel[3];
-    OUT out[16];
+CHIP DMux8Way {
+    IN in, sel[3];
+    OUT a, b, c, d, e, f, g, h;
 
     PARTS:
-    Mux16(a=a, b=b, sel=sel[0], out=outab);
-    Mux16(a=c, b=d, sel=sel[0], out=outcd);
-    Mux16(a=e, b=f, sel=sel[0], out=outef);
-    Mux16(a=g, b=h, sel=sel[0], out=outgh);
-    Mux16(a=outab, b=outcd, sel=sel[1], out=outabcd);
-    Mux16(a=outef, b=outgh, sel=sel[1], out=outefgh);
-    Mux16(a=outabcd, b=outefgh, sel=sel[2], out=out);
+    DMux(in=in, sel=sel[2], a=abcd, b=efgh);
+    DMux(in=abcd, sel=sel[1], a=ab, b=cd);
+    DMux(in=efgh, sel=sel[1], a=ef, b=gh);
+    DMux(in=ab, sel=sel[0], a=a, b=b);
+    DMux(in=cd, sel=sel[0], a=c, b=d);
+    DMux(in=ef, sel=sel[0], a=e, b=f);
+    DMux(in=gh, sel=sel[0], a=g, b=h);
 }
