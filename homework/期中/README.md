@@ -1,4 +1,4 @@
-## 每題說明
+## 說明
 
 # 1 (邏輯閘、布林邏輯)
 ## Not
@@ -113,6 +113,7 @@
 * **完成方式**: 參考網路上他人的程式
 * **整合**: 連結 ROM32K、CPU 與 Memory，形成完整的硬體執行平台。
 * **連結**: [sake92](https://github.com/sake92/nand2tetris/tree/master/projects)
+
 
 
 
